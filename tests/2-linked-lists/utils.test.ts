@@ -1,4 +1,4 @@
-import { SinglyLinkedList } from "../../src/2-linked-lists/utils";
+import { SinglyLinkedList, ListNode } from "../../src/2-linked-lists/utils";
 
 describe("Linked List Utils test", () => {
   const numberArray = [1, 2, 3];
@@ -9,19 +9,14 @@ describe("Linked List Utils test", () => {
   [numberArray, stringArray, objectArray, singleArray].forEach((arr) => {
     it(`Creates a single linked list from an array of ${typeof arr[0]}`, () => {
       const LinkedList = SinglyLinkedList.fromArray(arr);
-      const LinkedListValues: any[] = [];
-      let nodeRunner = LinkedList?.head;
-      while (nodeRunner) {
-        LinkedListValues.push(nodeRunner.value);
-        nodeRunner = nodeRunner.next;
-      }
+      const LinkedListValues = LinkedList.toArray();
       expect(LinkedList?.head?.value).toBe(arr[0]);
       expect(LinkedListValues).toEqual(arr);
     });
   });
 
-  it("Returns null when trying to create a singly linked list from an empty array", () => {
+  it("Returns an empty list when trying to create a singly linked list from an empty array", () => {
     const LinkedList = SinglyLinkedList.fromArray([]);
-    expect(LinkedList).toBeNull();
+    expect(LinkedList).toEqual(new SinglyLinkedList());
   });
 });

@@ -1,26 +1,40 @@
-export class Node<T> {
-  value: T | null = null;
-  next: Node<T> | null = null;
+export class ListNode<T> {
+  value: T | null;
+  next: ListNode<T> | null = null;
 
   constructor(value?: T) {
-    if (value) {
-      this.value = value;
-    }
+    this.value = value ?? null;
   }
 }
 
 export class SinglyLinkedList<T> {
-  head: Node<T> | null = null;
-  constructor(head: Node<T>) {
-    this.head = head;
+  head: ListNode<T>;
+  constructor(head?: ListNode<T>) {
+    this.head = head ?? new ListNode();
   }
 
-  static fromArray<T>(array: T[]): SinglyLinkedList<T> | null {
-    let head: Node<T> | null = null;
-    let prev: Node<T> | null = null;
-    let current: Node<T>;
+  public run(fn: (node: ListNode<T>) => void) {
+    let current: ListNode<T> | null = this.head;
+    while (current) {
+      fn(current);
+      current = current.next;
+    }
+  }
+
+  public toArray(): (T | null)[] {
+    const arr: (T | null)[] = [];
+    this.run((node) => {
+      arr.push(node.value);
+    });
+    return arr;
+  }
+
+  static fromArray<T>(array: T[]): SinglyLinkedList<T> {
+    let head: ListNode<T> | null = null;
+    let prev: ListNode<T> | null = null;
+    let current: ListNode<T>;
     for (let i = 0; i < array.length; i++) {
-      current = new Node(array[i]);
+      current = new ListNode(array[i]);
       if (i == 0) {
         head = current;
       }
@@ -29,9 +43,7 @@ export class SinglyLinkedList<T> {
       }
       prev = current;
     }
-    if (head) {
-      return new SinglyLinkedList(head);
-    }
-    return null;
+
+    return head ? new SinglyLinkedList(head) : new SinglyLinkedList();
   }
 }
