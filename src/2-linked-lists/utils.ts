@@ -21,6 +21,14 @@ export class SinglyLinkedList<T> {
     }
   }
 
+  public length(): number {
+    let count = 0;
+    this.run(() => {
+      count++;
+    });
+    return count;
+  }
+
   public toArray(): (T | null)[] {
     const arr: (T | null)[] = [];
     this.run((node) => {
