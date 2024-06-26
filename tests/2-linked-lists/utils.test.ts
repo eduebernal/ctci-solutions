@@ -19,4 +19,13 @@ describe("Linked List Utils test", () => {
     const LinkedList = SinglyLinkedList.fromArray([]);
     expect(LinkedList).toEqual(new SinglyLinkedList());
   });
+
+  it("Returns the list length", () => {
+    const list1 = SinglyLinkedList.fromArray([]);
+    expect(list1.length()).toBe(1);
+    const list2 = SinglyLinkedList.fromArray([1, 2, 3, 4, 5]);
+    expect(list2.length()).toBe(5);
+    const list3 = SinglyLinkedList.fromArray(new Array(100).fill(0));
+    expect(list3.length()).toBe(100);
+  });
 });
