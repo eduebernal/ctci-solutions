@@ -30,6 +30,7 @@ export const URLify = (input: string, trueLength: number): string => {
       inputArray[i + currentShift] = inputArray[i];
     }
   }
+  throw new Error()
 
   return inputArray.join("");
 };
