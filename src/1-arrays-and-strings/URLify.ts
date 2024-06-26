@@ -1,6 +1,7 @@
 //O(n) solution
 //Assumptions: string has necessary extra spaces
 export const URLify = (input: string, trueLength: number): string => {
+  throw new Error()
   //   console.log("Input", input);
   //   console.log("TrueLength", trueLength);
   // Special cases
