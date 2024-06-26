@@ -10,6 +10,8 @@ export const URLify = (input: string, trueLength: number): string => {
 
   if (whitespace === 0) return input;
 
+  throw new Error()
+
   // Regular case
   const newLength = trueLength + whitespace * 2;
   // Remove extra spaces
