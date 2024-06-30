@@ -37,7 +37,7 @@ export class SinglyLinkedList<T> {
     return arr;
   }
 
-  static fromArray<T>(array: T[]): SinglyLinkedList<T> {
+  static fromArray<T>(array: T[], loop?: boolean): SinglyLinkedList<T> {
     let head: ListNode<T> | null = null;
     let prev: ListNode<T> | null = null;
     let current: ListNode<T>;
@@ -50,6 +50,9 @@ export class SinglyLinkedList<T> {
         prev.next = current;
       }
       prev = current;
+      if (loop && i == array.length - 1) {
+        current.next = head;
+      }
     }
 
     return head ? new SinglyLinkedList(head) : new SinglyLinkedList();
