@@ -1,6 +1,6 @@
 import { SinglyLinkedList } from "./utils";
 
-//O(n^2) solution O(N) space
+//O(N) solution O(N) space
 export const removeDups = <T>(list: SinglyLinkedList<T>): typeof list => {
   const uniqueValues = new Set();
   let prev = list.head;
@@ -16,7 +16,7 @@ export const removeDups = <T>(list: SinglyLinkedList<T>): typeof list => {
   return list;
 };
 
-//O(n^2) without additional space
+//O(N^2) without additional space
 export const removeDupsNoBuffer = <T>(
   list: SinglyLinkedList<T>
 ): SinglyLinkedList<T> => {
